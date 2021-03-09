@@ -1,4 +1,4 @@
-#wget -O - https://raw.githubusercontent.com/edwardboucher/challenge02/main/install_kube_master.sh | sudo bash
+#wget -O - https://raw.githubusercontent.com/edwardboucher/challenge02/main/install_kube_worker.sh | sudo bash
 #works on Linux version 5.4.0-1037-aws (buildd@lgw01-amd64-051) (gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)) #39~18.04.1-Ubuntu SMP Fri Jan 15 02:48:42 UTC 2021
 #Create configuration file for containerd:
 cat <<EOF | sudo tee /etc/modules-load.d/containerd.conf
@@ -42,16 +42,3 @@ sudo apt-get update
 sudo apt-get install -y kubelet=1.20.1-00 kubeadm=1.20.1-00 kubectl=1.20.1-00
 #Turn off automatic updates:
 sudo apt-mark hold kubelet kubeadm kubectl
-#Network init
-sudo kubeadm init --pod-network-cidr 192.168.0.0/16
-#Set kubectl access:
-mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
-#Test access to cluster:
-#kubectl version
-#Install the Calico Network Add-On
-#On the Control Plane Node, install Calico Networking:
-kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
-#Check status of Calico components:
-kubectl get pods -n kube-system
