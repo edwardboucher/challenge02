@@ -55,3 +55,6 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 #Check status of Calico components:
 kubectl get pods -n kube-system
+#KUBECTL CONFIG
+#sudo cp -R /root/.kube /home/$USER
+#sudo chown $USER:$USER /home/$USER/.kube -R
