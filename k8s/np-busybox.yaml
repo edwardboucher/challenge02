@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: np-busybox
-  namespace: nginx-test
+  namespace: kubeless
   labels:
     app: client
 spec:

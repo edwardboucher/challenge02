@@ -1,0 +1,3 @@
+kubectl exec -n kubeless np-busybox -- curl 192.168.9.129
+kubectl exec -n kubeless np-busybox -- curl 10.108.214.124:3000
+#note ..<internal>:<external_ip>
